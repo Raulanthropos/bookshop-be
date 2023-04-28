@@ -9,6 +9,7 @@ import {
 } from "./errorHandlers.js";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import usersRouter from "./api/users/index.js";
 
 dotenv.config();
 
@@ -31,6 +32,8 @@ const corsOpts = {
 server.use(cors(corsOpts));
   
 server.use(express.json());
+
+server.use("/users", usersRouter);
 
 server.use(badRequestHandler);
 server.use(unauthorizedHandler);

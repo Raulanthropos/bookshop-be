@@ -83,7 +83,7 @@ usersRouter.post("/register", async (req, res, next) => {
 
   usersRouter.post("/login", async (req, res, next) => {
     try {
-      const { email, password } = req.body;
+      const { email, password, role } = req.body;
       const user = await UsersModel.checkCredentials(email, password);
       if (user) {
         const payload = {

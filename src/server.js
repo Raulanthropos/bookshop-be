@@ -10,6 +10,7 @@ import {
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import usersRouter from "./api/users/index.js";
+import booksRouter from "./api/books/index.js";
 
 dotenv.config();
 
@@ -33,7 +34,10 @@ server.use(cors(corsOpts));
   
 server.use(express.json());
 
+server.use(express.static("public"));
+
 server.use("/users", usersRouter);
+server.use("/books", booksRouter);
 
 server.use(badRequestHandler);
 server.use(unauthorizedHandler);
